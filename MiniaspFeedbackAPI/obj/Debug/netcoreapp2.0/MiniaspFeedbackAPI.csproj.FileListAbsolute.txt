@@ -1,0 +1,11 @@
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\bin\Debug\netcoreapp2.0\MiniaspFeedbackAPI.deps.json
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\bin\Debug\netcoreapp2.0\MiniaspFeedbackAPI.runtimeconfig.json
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\bin\Debug\netcoreapp2.0\MiniaspFeedbackAPI.runtimeconfig.dev.json
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\bin\Debug\netcoreapp2.0\MiniaspFeedbackAPI.dll
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\bin\Debug\netcoreapp2.0\MiniaspFeedbackAPI.pdb
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.csproj.CoreCompileInputs.cache
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.AssemblyInfoInputs.cache
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.AssemblyInfo.cs
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.dll
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.pdb
+D:\Core API\MiniaspFeedbackAPI\MiniaspFeedbackAPI\obj\Debug\netcoreapp2.0\MiniaspFeedbackAPI.csprojAssemblyReference.cache
