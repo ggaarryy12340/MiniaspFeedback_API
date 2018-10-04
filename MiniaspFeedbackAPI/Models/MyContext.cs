@@ -13,5 +13,9 @@ namespace MiniaspFeedbackAPI.Models
         }
 
         public DbSet<Feedback> Feedback { get; set; }
+
+        public DbSet<User> User { get; set; }
+
+        public DbSet<Utoken> Utoken { get; set; }
     }
 }
