@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MiniaspFeedbackAPI.Models;
+using Newtonsoft.Json;
 
 namespace MiniaspFeedbackAPI.Controllers
 {
@@ -17,18 +19,22 @@ namespace MiniaspFeedbackAPI.Controllers
         }
 
         // GET: api/User
+        [EnableCors("MyPolicy")]
         [HttpGet]
         [Route("api/Auth/IsLogined")]
         public IActionResult IsLogined()
         {
             var token = Request.Headers["UToken"].First();
+            User user = new User();
+            IsLoginedOutput output = new IsLoginedOutput();
 
             if (token == null)
             {
-                return NotFound();
+                output.msg = "未接收到token資料!";
+                return Ok(output);
             }
 
-            var user = (
+            user = (
                 from u in _context.User
                 from t in _context.Utoken
                 where t.UtokenId == token && t.UTokenTimeOut > DateTime.Now
@@ -37,7 +43,8 @@ namespace MiniaspFeedbackAPI.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                output.msg = "連線逾時，請重新登入!";
+                return Ok(output);
             }
 
             // 設定token逾時分鐘數
@@ -51,7 +58,7 @@ namespace MiniaspFeedbackAPI.Controllers
             UpdateToken.UTokenTimeOut = UtokenTime;
             _context.SaveChanges();
 
-            return Ok();
+            return Ok(new User() { UserId = user.UserId, Name = user.Name });
         }
 
         //// ' GET: api/User
@@ -65,23 +72,27 @@ namespace MiniaspFeedbackAPI.Controllers
         //// End Function
 
         // POST: api/User/Login
+        [EnableCors("MyPolicy")]
         [HttpPost]
         [Route("api/Auth/Login")]
         public IActionResult PostLogin([FromBody()] Login loginInfo)
         {
+            LoginOutput output = new LoginOutput();
+
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                output.result = "驗證失敗!";
+                return Ok(output);
             }
 
             var user = _context.User.FirstOrDefault(x => x.UserId == loginInfo.userId && x.Password == loginInfo.password);
 
             if (user == null)
             {
-                return NotFound();
+                output.result = "帳號或密碼輸入錯誤!";
+                return Ok(output);
             }
-
-            LoginOutput output = new LoginOutput();
+            
             // 取得ClientIP
             string ClientIP = HttpContext.Connection.RemoteIpAddress.ToString();
 
@@ -116,7 +127,7 @@ namespace MiniaspFeedbackAPI.Controllers
 
             output = new LoginOutput
             {
-                result = "登入成功",
+                result = "登入成功!",
                 uToken = newToken.UtokenId
             };
 
